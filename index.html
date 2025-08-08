@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="output.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card-hover:hover {
+      transform: scale(1.05);
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    /* Override the modal backdrop to black */
+    .modal-backdrop.show {
+      background-color: black !important;
+      opacity: 0.9 !important; /* Adjust for transparency */
+    }
+    /* Custom horizontal scrollbar styling */
+.scrollbar-custom::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #1f1f1f; /* dark track */
+  border-radius: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #ff4757; /* red thumb */
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #ff6b81; /* lighter on hover */
+}
+
+/* Firefox support */
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: #ff4757 #1f1f1f;
+}
+  </style>
+</head>
+<body>
+<!--Banner Section-->
+<section class="relative w-[100%] h-[100vh] bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_large.jpg')] bg-center bg-cover">
+  <div class="absolute w-[100%] h-[100vh] bg-[rgba(0,0,0,0.5)] z-0">
+    <header class="relative max-w-[1300px] mx-auto z-10 p-2">
+      <div class="grid sm:grid-cols-2 grid-cols-[30%_auto] px-[10px] items-center">
+        <figure>
+          <img src="image/Netflix_Logo_PMS.png" class="w-[190px]" alt="Netflix Logo" />
+        </figure>
+        <div class="flex justify-end gap-[10px]">
+          <div class="relative">
+            <svg class="text-white absolute top-[9px] left-[5px]" xmlns="http://www.w3.org/2000/svg" fill="none" role="img" viewBox="0 0 16 16" width="16" height="16" data-icon="LanguagesSmall" aria-hidden="true">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10.7668 5.33333L10.5038 5.99715L9.33974 8.9355L8.76866 10.377L7.33333 14H9.10751L9.83505 12.0326H13.4217L14.162 14H16L12.5665 5.33333H10.8278H10.7668ZM10.6186 9.93479L10.3839 10.5632H11.1036H12.8856L11.6348 7.2136L10.6186 9.93479ZM9.52722 4.84224C9.55393 4.77481 9.58574 4.71045 9.62211 4.64954H6.41909V2H4.926V4.64954H0.540802V5.99715H4.31466C3.35062 7.79015 1.75173 9.51463 0 10.4283C0.329184 10.7138 0.811203 11.2391 1.04633 11.5931C2.55118 10.6795 3.90318 9.22912 4.926 7.57316V12.6667H6.41909V7.51606C6.81951 8.15256 7.26748 8.76169 7.7521 9.32292L8.31996 7.88955C7.80191 7.29052 7.34631 6.64699 6.9834 5.99715H9.06968L9.52722 4.84224Z" fill="currentColor"></path>
+</svg>
+            <select name="" id="" class="bg-[black] text-white border-[1px] border-[white] sm:p-[5px_25px] p-[5px_20px] rounded-[5px]">
+              <option value="">English</option>
+              <option value="">Hindi</option>
+            </select>
+          </div>
+          <button class="bg-[red] px-[10px] rounded-[5px] text-white">Sign In</button>
+        </div>
+      </header>
+      <div class="max-w-[1300px] mx-auto sm:py-[150px] py-[50px] text-center text-white">
+        <h1 class="sm:text-[55px] text-[35px] font-bold leading-tight">Unlimited movies,TV <br> shows and more</h1>
+        <p class="sm:text-[20px] text-[18px] py-[10px] font-bold">Starts at ₹149. Cancel at any time.</p>
+        <p class="sm:text-[15px] text-[15px] py-[10px] font-bold">Ready to watch? Enter your email to create or <span class="block sm:inline">restart your membership.</span></p>
+        <div class="max-w-[700px] sm:px-[10px] px-[40px] mx-auto mt-[30px]">
+          <form action="" class="grid gap-[20px] sm:grid-cols-[70%_auto] grid-cols-1">
+            <input type="text" class="border-[1px] pl-[20px] h-[50px] border-[#ccc] bg-[transparent]" placeholder="Email Address">
+            <button class="bg-[red] px-[10px] rounded-[5px] py-[7px] text-white hover:bg-[rgb(193,17,25)] duration-300 text-[25px] text-center">Get Started ></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+<!--Banner section end-->
+<!-- Wrapper section with Netflix-style gradient header -->
+<section class="bg-black min-h-screen w-full h-auto">
+  <!-- Top red-blue gradient just like Netflix -->
+  <svg class="w-full h-5" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,80 C480,0 960,0 1440,80 L1440,0 L0,0 Z" fill="url(#grad)" />
+    <defs>
+      <linearGradient id="grad" x1="1%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#1d4ed8;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#6b21a8;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+  </svg>
+  <div class="flex flex-col items-center text-center px-[20px] pt-[150px]"></div>
+  <div class="px-8 py-8">
+    <!-- Section Title -->
+    <h2 class="text-white text-2xl font-bold mb-7">Trending Now</h2>
+    
+    <!-- Cards row -->
+    <div class="flex space-x-8 overflow-x-auto pr-6 pb-4 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-[#161616] text-center justify-items-center whitespace-nowrap scrollbar-custom">
+      
+      <!-- 1 -->
+      <div class="p-6">
+    <div class="relative min-w-[170px] card-hover" data-bs-toggle="modal" data-bs-target="#movieModal">
+      <span class="absolute left-2 top-1 text-white text-6xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+      <img src="image/1.jpg" alt="Summer Slam"
+           class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+    </div>
+  </div>
+        <!-- Bootstrap Modal -->
+   <div class="modal fade" id="movieModal" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white" style="background-color: #18181b;"> <!-- Updated -->
+      <div class="modal-body p-0 relative">
+
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Modal Image -->
+        <img src="image/AAAABY2l4I8kYLLwDUmkaH6mXEN6YaH9Cr_KlYinEbsOaGEmY8naTL5yR44R5VsD9tMMsEG7IZrCYYutR2zWTOd_c8oADbTfPGbrsak-.jpg" alt="SUMMER SLAM" class="w-full rounded-top" />
+
+        <!-- Modal Content -->
+        <div class="p-4">
+          <h2 class="text-4xl font-bold text-white">SUMMER SLAM</h2>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2025</span>
+            <span class="badge bg-secondary">U/A 13+</span>
+            <span class="badge bg-secondary">Show</span>
+            <span class="badge bg-secondary">Action</span>
+          </div>
+
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+      <!-- 2 -->
+      <div class="p-4">
+  <div class="relative w-[170px] sm:w-[170px] card-hover cursor-pointer" data-bs-toggle="modal" data-bs-target="#movieModal2">
+    <!-- Top Text Badge -->
+    <span class="absolute left-2 top-1 text-white text-4xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+
+    <!-- Image -->
+    <img src="image/2.jpg" alt="Summer Slam"
+         class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="movieModal2" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white overflow-hidden" style="background-color: #18181b;">
+      
+      <!-- Modal Body -->
+      <div class="modal-body p-0">
+        
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Image -->
+        <div class="w-full">
+          <img src="image/squidgame.jpg" alt="Squid Game" class="img-fluid w-100" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="p-4">
+          <h2 class="text-2xl md:text-4xl font-bold text-white">SQUID GAME</h2>
+
+          <!-- Tags -->
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2025</span>
+            <span class="badge bg-secondary">A</span>
+            <span class="badge bg-secondary">Show</span>
+            <span class="badge bg-secondary">Thrillers</span>
+            <span class="badge bg-secondary">Dramas</span>
+          </div>
+
+          <!-- Button -->
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Bootstrap JS Bundle -->
+      
+      <!-- 3 -->
+      <div class="p-4">
+  <div class="relative w-[170px] sm:w-[170px] card-hover cursor-pointer" data-bs-toggle="modal" data-bs-target="#movieModal3">
+    <!-- Top Text Badge -->
+    <span class="absolute left-2 top-1 text-white text-4xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+
+    <!-- Image -->
+    <img src="image/3.jpg" alt="RAID-2"
+         class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="movieModal3" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white overflow-hidden" style="background-color: #18181b;">
+      
+      <!-- Modal Body -->
+      <div class="modal-body p-0">
+        
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Image -->
+        <div class="w-full">
+          <img src="image/Raid.jpg" alt="RAID-2" class="img-fluid w-100" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="p-4">
+          <h2 class="text-2xl md:text-4xl font-bold text-white">RAID 2</h2>
+
+          <!-- Tags -->
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2025</span>
+            <span class="badge bg-secondary">U/A 13+</span>
+            <span class="badge bg-secondary">Movie</span>
+            <span class="badge bg-secondary">Thrillers</span>
+            <span class="badge bg-secondary">Dramas</span>
+          </div>
+
+          <!-- Button -->
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- 4 -->
+      <div class="p-4">
+  <div class="relative w-[170px] sm:w-[170px] card-hover cursor-pointer" data-bs-toggle="modal" data-bs-target="#movieModal4">
+    <!-- Top Text Badge -->
+    <span class="absolute left-2 top-1 text-white text-4xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+
+    <!-- Image -->
+    <img src="image/4.jpg" alt="KAPIL SHOW"
+         class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="movieModal4" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white overflow-hidden" style="background-color: #18181b;">
+      
+      <!-- Modal Body -->
+      <div class="modal-body p-0">
+        
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Image -->
+        <div class="w-full">
+          <img src="image/KAPILSHOW.JPG" alt="THE GREAT INDIAN KAPIL SHOW" class="img-fluid w-100" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="p-4">
+          <h2 class="text-2xl md:text-4xl font-bold text-white">THE GREAT INDIAN KAPIL SHOW</h2>
+
+          <!-- Tags -->
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2025</span>
+            <span class="badge bg-secondary">U/A 13+</span>
+            <span class="badge bg-secondary">Show</span>
+            <span class="badge bg-secondary">Talk Show</span>
+            <span class="badge bg-secondary">Comedies</span>
+            <span class="badge bg-secondary">Variety TV</span>
+          </div>
+          <!-- Button -->
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- 5 -->
+      <div class="p-4">
+  <div class="relative w-[170px] sm:w-[170px] card-hover cursor-pointer" data-bs-toggle="modal" data-bs-target="#movieModal5">
+    <!-- Top Text Badge -->
+    <span class="absolute left-2 top-1 text-white text-4xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+
+    <!-- Image -->
+    <img src="image/5.jpg" alt="MANDALA MURDERS"
+         class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="movieModal5" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white overflow-hidden" style="background-color: #18181b;">
+      
+      <!-- Modal Body -->
+      <div class="modal-body p-0">
+        
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Image -->
+        <div class="w-full">
+          <img src="image/MADALA.JPG" alt="MANDALA MURDERS" class="img-fluid w-100" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="p-4">
+          <h2 class="text-2xl md:text-4xl font-bold text-white">MANDALA MURDERS</h2>
+
+          <!-- Tags -->
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2025</span>
+            <span class="badge bg-secondary">A</span>
+            <span class="badge bg-secondary">Show</span>
+            <span class="badge bg-secondary">Thrillers</span>
+            <span class="badge bg-secondary">Mysteries</span>
+            <span class="badge bg-secondary">Dramas</span>
+          </div>
+          <!-- Button -->
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <!-- Additional sample cards 6–10 -->
+      <div class="p-4">
+  <div class="relative w-[170px] sm:w-[170px] card-hover cursor-pointer" data-bs-toggle="modal" data-bs-target="#movieModal6">
+    <!-- Top Text Badge -->
+    <span class="absolute left-2 top-1 text-white text-4xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+
+    <!-- Image -->
+    <img src="image/6.jpg" alt="AAP JAISA KOI"
+         class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="movieModal6" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white overflow-hidden" style="background-color: #18181b;">
+      
+      <!-- Modal Body -->
+      <div class="modal-body p-0">
+        
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Image -->
+        <div class="w-full">
+          <img src="image/AAP.JPG" alt="AAP JAISA KOI" class="img-fluid w-100" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="p-4">
+          <h2 class="text-2xl md:text-4xl font-bold text-white">AAP JAISA KOI</h2>
+
+          <!-- Tags -->
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2025</span>
+            <span class="badge bg-secondary">U/A 13+</span>
+            <span class="badge bg-secondary">Movie</span>
+            <span class="badge bg-secondary">Comedies</span>
+            <span class="badge bg-secondary">Romance</span>
+            <span class="badge bg-secondary">Dramas</span>
+          </div>
+
+          <!-- Button -->
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="p-4">
+  <div class="relative w-[170px] sm:w-[170px] card-hover cursor-pointer" data-bs-toggle="modal" data-bs-target="#movieModal7">
+    <!-- Top Text Badge -->
+    <span class="absolute left-2 top-1 text-white text-4xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+
+    <!-- Image -->
+    <img src="image/7.jpg" alt="JAAT"
+         class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="movieModal7" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white overflow-hidden" style="background-color: #18181b;">
+      
+      <!-- Modal Body -->
+      <div class="modal-body p-0">
+        
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Image -->
+        <div class="w-full">
+          <img src="image/jaat.jpg" alt="JAAT" class="img-fluid w-100" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="p-4">
+          <h2 class="text-2xl md:text-4xl font-bold text-white">JAAT</h2>
+
+          <!-- Tags -->
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2025</span>
+            <span class="badge bg-secondary">U/A 16+</span>
+            <span class="badge bg-secondary">Movie</span>
+            <span class="badge bg-secondary">Action</span>
+          </div>
+
+          <!-- Button -->
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="p-4">
+  <div class="relative w-[170px] sm:w-[170px] card-hover cursor-pointer" data-bs-toggle="modal" data-bs-target="#movieModal8">
+    <!-- Top Text Badge -->
+    <span class="absolute left-2 top-1 text-white text-4xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+
+    <!-- Image -->
+    <img src="image/8.jpg" alt="HIT"
+         class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="movieModal8" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white overflow-hidden" style="background-color: #18181b;">
+      
+      <!-- Modal Body -->
+      <div class="modal-body p-0">
+        
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Image -->
+        <div class="w-full">
+          <img src="image/hit.jpg" alt="HIT" class="img-fluid w-100" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="p-4">
+          <h2 class="text-2xl md:text-4xl font-bold text-white">HIT</h2>
+
+          <!-- Tags -->
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2025</span>
+            <span class="badge bg-secondary">A</span>
+            <span class="badge bg-secondary">Movie</span>
+            <span class="badge bg-secondary">Thrillers</span>
+          </div>
+
+          <!-- Button -->
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="p-4">
+  <div class="relative w-[170px] sm:w-[170px] card-hover cursor-pointer" data-bs-toggle="modal" data-bs-target="#movieModal9">
+    <!-- Top Text Badge -->
+    <span class="absolute left-2 top-1 text-white text-4xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+
+    <!-- Image -->
+    <img src="image/9.jpg" alt="THUG LIFE"
+         class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="movieModal9" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white overflow-hidden" style="background-color: #18181b;">
+      
+      <!-- Modal Body -->
+      <div class="modal-body p-0">
+        
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Image -->
+        <div class="w-full">
+          <img src="image/thug.jpg" alt="THUG LIFE" class="img-fluid w-100" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="p-4">
+          <h2 class="text-2xl md:text-4xl font-bold text-white">THUG LIFE</h2>
+
+          <!-- Tags -->
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2025</span>
+            <span class="badge bg-secondary">U/A 16+</span>
+            <span class="badge bg-secondary">Movie</span>
+            <span class="badge bg-secondary">Action</span>
+            <span class="badge bg-secondary">Dramas</span>
+          </div>
+
+          <!-- Button -->
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="p-4">
+  <div class="relative w-[170px] sm:w-[170px] card-hover cursor-pointer" data-bs-toggle="modal" data-bs-target="#movieModal10">
+    <!-- Top Text Badge -->
+    <span class="absolute left-2 top-1 text-white text-4xl font-bold font-mono opacity-90 drop-shadow-lg select-none -z-1">1</span>
+
+    <!-- Image -->
+    <img src="image/wed.jpg" alt="WEDNESDAY"
+         class="rounded-md w-[170px] h-[240px] object-cover shadow-xl border-[3px] border-transparent hover:border-red-600 transition" />
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="movieModal10" tabindex="-1" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content border-0 rounded-xl text-white overflow-hidden" style="background-color: #18181b;">
+      
+      <!-- Modal Body -->
+      <div class="modal-body p-0">
+        
+        <!-- Close Button -->
+        <button type="button" class="btn-close btn-close-white position-absolute top-2 end-2 m-2 z-10" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <!-- Image -->
+        <div class="w-full">
+          <img src="image/WED1.jpg" alt="WEDNESDAY" class="img-fluid w-100" />
+        </div>
+
+        <!-- Text Content -->
+        <div class="p-4">
+          <h2 class="text-2xl md:text-4xl font-bold text-white">WEDNESDAY</h2>
+
+          <!-- Tags -->
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <span class="badge bg-secondary">2022</span>
+            <span class="badge bg-secondary">U/A 16+</span>
+            <span class="badge bg-secondary">Show</span>
+            <span class="badge bg-secondary">Comedies</span>
+            <span class="badge bg-secondary">Fantasy</span>
+            <span class="badge bg-secondary">Mysteries</span>
+          </div>
+          <!-- Button -->
+          <button class="btn btn-danger mt-4">
+            Get Started <span class="ms-2">&rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<section class="py-5 text-white" style="background-color: #000;">
+  <div class="container">
+    <h2 class=" mb-5">More reasons to join</h2>
+
+    <div class="row g-4">
+
+      <!-- Card 1 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="p-4 h-100 rounded-4" style="background: linear-gradient(to bottom right, #1c1c2d, #111);">
+          <h5 class="fw-bold">Enjoy on your TV</h5>
+          <p class="small text-secondary">Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</p>
+          <img src="image/desktop.png" alt="TV Icon" class="img-fluid mt-3" style="width: 50px;">
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="p-4 h-100 rounded-4" style="background: linear-gradient(to bottom right, #1c1c2d, #111);">
+          <h5 class="fw-bold">Download your shows to watch offline</h5>
+          <p class="small text-secondary">Save your favourites easily and always have something to watch.</p>
+          <img src="image/download.png" alt="Download Icon" class="img-fluid mt-3" style="width: 50px;">
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="p-4 h-100 rounded-4" style="background: linear-gradient(to bottom right, #1c1c2d, #111);">
+          <h5 class="fw-bold">Watch everywhere</h5>
+          <p class="small text-secondary">Stream unlimited movies and TV shows on your phone, tablet, laptop and TV.</p>
+          <img src="image/telescope.png" alt="Watch Icon" class="img-fluid mt-3" style="width: 50px;">
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-6 col-lg-3">
+        <div class="p-4 h-100 rounded-4" style="background: linear-gradient(to bottom right, #1c1c2d, #111);">
+          <h5 class="fw-bold">Create profiles for kids</h5>
+          <p class="small text-secondary">Send kids on adventures with their favourite characters in a space made just for them — free with your membership.</p>
+          <img src="image/child.png" alt="Kids Icon" class="img-fluid mt-3" style="width: 50px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-black text-white">
+  <div class="py-10 max-w-7xl mx-auto px-4 ">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6">Frequently Asked Questions</h2>
+
+    <ul class="space-y-2 max-w-[120%] ml-[-30px] sm:max-w-full sm:ml-0">
+      <!-- FAQ item -->
+      <li class="bg-[#2a2a2a] rounded-md overflow-hidden">
+        <button class="w-full flex justify-between items-center py-3 sm:py-4 px-3 sm:px-4 text-left text-base sm:text-lg font-medium focus:outline-none faq-btn">
+          <span class="text-lg sm:text-2xl">What is Netflix?</span>
+          <span class="text-2xl sm:text-3xl">+</span>
+        </button>
+        <div class="h-px bg-black"></div>
+        <p class="hidden px-3 sm:px-4 pb-3 sm:pb-4 text-gray-300 faq-content text-base sm:text-xl">
+          Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices.
+          <br>You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!
+        </p>
+      </li>
+
+      <!-- FAQ item -->
+      <li class="bg-[#2a2a2a] rounded-md overflow-hidden">
+        <button class="w-full flex justify-between items-center py-3 sm:py-4 px-3 sm:px-4 text-left text-base sm:text-lg font-medium focus:outline-none faq-btn">
+          <span class="text-lg sm:text-2xl">How much does Netflix cost?</span>
+          <span class="text-2xl sm:text-3xl">+</span>
+        </button>
+        <div class="h-px bg-black"></div>
+        <p class="hidden px-3 sm:px-4 pb-3 sm:pb-4 text-gray-300 faq-content text-base sm:text-xl">
+          Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₹149 to ₹649 a month. No extra costs, no contracts.
+        </p>
+      </li>
+
+      <!-- FAQ item -->
+      <li class="bg-[#2a2a2a] rounded-md overflow-hidden">
+        <button class="w-full flex justify-between items-center py-3 sm:py-4 px-3 sm:px-4 text-left text-base sm:text-lg font-medium focus:outline-none faq-btn">
+          <span class="text-lg sm:text-2xl">Where can I watch?</span>
+          <span class="text-2xl sm:text-3xl">+</span>
+        </button>
+        <div class="h-px bg-black"></div>
+        <p class="hidden px-3 sm:px-4 pb-3 sm:pb-4 text-gray-300 faq-content text-base sm:text-xl">
+          Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.
+          <br>
+          You can also download your favourite shows with the iOS or Android app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere.
+        </p>
+      </li>
+
+      <!-- FAQ item -->
+      <li class="bg-[#2a2a2a] rounded-md overflow-hidden">
+        <button class="w-full flex justify-between items-center py-3 sm:py-4 px-3 sm:px-4 text-left text-base sm:text-lg font-medium focus:outline-none faq-btn">
+          <span class="text-lg sm:text-2xl">How do I cancel?</span>
+          <span class="text-2xl sm:text-3xl">+</span>
+        </button>
+        <div class="h-px bg-black"></div>
+        <p class="hidden px-3 sm:px-4 pb-3 sm:pb-4 text-gray-300 faq-content text-base sm:text-xl">
+          Netflix is flexible. There are no annoying contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees – start or stop your account anytime.
+        </p>
+      </li>
+
+      <!-- FAQ item -->
+      <li class="bg-[#2a2a2a] rounded-md overflow-hidden">
+        <button class="w-full flex justify-between items-center py-3 sm:py-4 px-3 sm:px-4 text-left text-base sm:text-lg font-medium focus:outline-none faq-btn">
+          <span class="text-lg sm:text-2xl">What can I watch on Netflix?</span>
+          <span class="text-2xl sm:text-3xl">+</span>
+        </button>
+        <div class="h-px bg-black"></div>
+        <p class="hidden px-3 sm:px-4 pb-3 sm:pb-4 text-gray-300 faq-content text-base sm:text-xl">
+          Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.
+        </p>
+      </li>
+
+      <!-- FAQ item -->
+      <li class="bg-[#2a2a2a] rounded-md overflow-hidden">
+        <button class="w-full flex justify-between items-center py-3 sm:py-4 px-3 sm:px-4 text-left text-base sm:text-lg font-medium focus:outline-none faq-btn">
+          <span class="text-lg sm:text-2xl">Is Netflix good for kids?</span>
+          <span class="text-2xl sm:text-3xl">+</span>
+        </button>
+        <div class="h-px bg-black"></div>
+        <p class="hidden px-3 sm:px-4 pb-3 sm:pb-4 text-gray-300 faq-content text-base sm:text-xl">
+          The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and films in their own space.
+          <br>
+          Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.
+        </p>
+      </li>
+    </ul>
+      <p class="sm:text-[15px] text-[15px] py-[10px] font-bold text-center">Ready to watch? Enter your email to create or <span class="block sm:inline">restart your membership.</span></p>
+        <div class="max-w-[700px] sm:px-[10px] px-[40px] mx-auto mt-[30px]">
+          <form action="" class="grid gap-[20px] sm:grid-cols-[70%_auto] grid-cols-1">
+            <input type="text" class="border-[1px] pl-[20px] h-[50px] border-[#ccc] bg-[transparent]" placeholder="Email Address">
+            <button class="bg-[red] px-[10px] rounded-[5px] py-[7px] text-white hover:bg-[rgb(193,17,25)] duration-300 text-[25px] text-center">Get Started ></button>
+          </form>
+        </div>
+  </div>
+</section>
+<script>
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.parentElement.querySelector('.faq-content');
+      content.classList.toggle('hidden');
+      const icon = btn.querySelector('span:last-child');
+      icon.textContent = content.classList.contains('hidden') ? '+' : '×';
+    });
+  });
+</script>
+<!--Footer Section Start-->
+<footer class="w-[100%] bg-[black] border-t-[8px] border-t-[#605d5d] sm:py-[60px] py-[50px]">
+  <div class="max-w-[1170px] mx-auto px-[15px]">
+    <h6 class="text-white text-[10px]">Questions? Call <a class="underline text-white" href="tel:000-800-919-1743">000-800-919-1743</a></h6>
+    <div class="py-[30px] grid sm:grid-cols-4 grid-cols-1">
+      <div>
+        <ul class="text- ml-[-30px] space-y-2">
+          <li><a class="underline text-white" href="#">FAQ</a></li>
+          <li><a class="underline text-white" href="#">Investor Relations</a></li>
+          <li><a class="underline text-white" href="#">Privacy</a></li>
+          <li><a class="underline text-white" href="#">Speed Test</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="text-white ml-[-30px] space-y-2">
+          <li><a class="underline text-white" href="#">Help Centre</a></li>
+          <li><a class="underline text-white" href="#">Jobs</a></li>
+          <li><a class="underline text-white" href="#">Cookie Preferences</a></li>
+          <li><a class="underline text-white" href="#">Legal Notices</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="text-white ml-[-30px] space-y-2">
+          <li><a class="underline text-white" href="#">Account</a></li>
+          <li><a class="underline text-white" href="#">Ways to Watch</a></li>
+          <li><a class="underline text-white" href="#">Corporate Information</a></li>
+          <li><a class="underline text-white" href="#">Only on Netflix</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="text-white ml-[-30px] space-y-2">
+          <li><a class="underline text-white" href="#">Media Centre</a></li>
+          <li><a class="underline text-white" href="#">Terms of Use</a></li>
+          <li><a class="underline text-white" href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="relative mb-6">
+            <svg class="text-white absolute top-[9px] left-[5px]" xmlns="http://www.w3.org/2000/svg" fill="none" role="img" viewBox="0 0 16 16" width="16" height="16" data-icon="LanguagesSmall" aria-hidden="true">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10.7668 5.33333L10.5038 5.99715L9.33974 8.9355L8.76866 10.377L7.33333 14H9.10751L9.83505 12.0326H13.4217L14.162 14H16L12.5665 5.33333H10.8278H10.7668ZM10.6186 9.93479L10.3839 10.5632H11.1036H12.8856L11.6348 7.2136L10.6186 9.93479ZM9.52722 4.84224C9.55393 4.77481 9.58574 4.71045 9.62211 4.64954H6.41909V2H4.926V4.64954H0.540802V5.99715H4.31466C3.35062 7.79015 1.75173 9.51463 0 10.4283C0.329184 10.7138 0.811203 11.2391 1.04633 11.5931C2.55118 10.6795 3.90318 9.22912 4.926 7.57316V12.6667H6.41909V7.51606C6.81951 8.15256 7.26748 8.76169 7.7521 9.32292L8.31996 7.88955C7.80191 7.29052 7.34631 6.64699 6.9834 5.99715H9.06968L9.52722 4.84224Z" fill="currentColor"></path>
+</svg>
+            <select name="" id="" class="bg-[black] text-white border-[1px] border-[white] sm:p-[5px_25px] p-[5px_20px] rounded-[5px]">
+              <option value="">English</option>
+              <option value="">Hindi</option>
+            </select>
+          </div>
+          <h6 class="text-white">Netflix India</h6>
+    </div>
+  </div>
+</footer>
+<!--Footer section End-->
+</body>
+</html>
